@@ -1,0 +1,21 @@
+cat > .gitignore <<'EOF'
+# Java / Maven
+target/
+*.log
+*.iml
+.idea/
+.mvn/wrapper/maven-wrapper.jar
+
+# Node / Vite
+node_modules/
+dist/
+.vscode/
+
+# OS
+.DS_Store
+
+# Secrets / локальные конфиги (по желанию)
+**/application.properties
+**/.env
+EOF
+

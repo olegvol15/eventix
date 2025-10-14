@@ -1,0 +1,23 @@
+.btn-primary {
+  background: linear-gradient(135deg, #6ea8ff, #5b7cff);
+  color: #0b0f1a;
+  font-weight: 700;
+  padding: 10px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.08);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  font-weight: 600;
+  padding: 10px 16px;
+  border-radius: 12px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}

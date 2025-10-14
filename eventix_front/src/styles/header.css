@@ -1,0 +1,100 @@
+:root {
+  --hdr-bg: rgba(9, 12, 26, 0.55);
+  --hdr-border: rgba(255, 255, 255, 0.08);
+  --accent: #6ea8ff;
+}
+
+/* ====== HEADER BASE ====== */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  backdrop-filter: blur(12px);
+  background: linear-gradient(180deg, var(--hdr-bg), rgba(9, 12, 26, 0.3));
+  border-bottom: 1px solid var(--hdr-border);
+  transition: background 0.3s ease;
+  margin-bottom: 0; /* ❗ убираем отступ под хедером */
+}
+
+/* выравнивание контента */
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 20px;
+  height: 90px;
+  position: relative;
+}
+
+/* ====== CENTERED LOGO ====== */
+.center-header .header-logo {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;
+}
+
+.center-header .header-logo img {
+  height: 82px; /* 🔥 увеличили логотип */
+  width: auto;
+  display: block;
+  filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.4));
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.center-header .header-logo:hover img {
+  transform: scale(1.07);
+  filter: drop-shadow(0 8px 26px rgba(110, 168, 255, 0.5));
+}
+
+/* ====== SIDES ====== */
+.header-side {
+  flex: 1;
+}
+
+.header-side.right {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ====== ICON BUTTON ====== */
+.icon-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50%;
+  width: 42px;
+  height: 42px;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+  margin: 0 4px;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  transform: translateY(-2px);
+}
+
+.icon-btn:active {
+  transform: translateY(0);
+}
+
+.header-glow {
+  display: none;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 640px) {
+  .center-header .header-logo img {
+    height: 64px; 
+  }
+  .icon-btn {
+    width: 38px;
+    height: 38px;
+  }
+}
+
+
