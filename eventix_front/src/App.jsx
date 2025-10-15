@@ -12,6 +12,8 @@ import RequireRole from './components/routes/RequireRole.jsx'
 import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import AdminEvents from './pages/admin/AdminEvents.jsx'
 import AdminEventForm from './pages/admin/AdminEventForm.jsx'
+import HowItWorks from './components/layout/HowItWorks.jsx'
+import FeaturedCategories from './components/layout/FeaturedCategories.jsx'
 
 export default function App() {
   return (
@@ -25,6 +27,8 @@ export default function App() {
             element={
               <>
                 <Hero />
+                <HowItWorks />
+                <FeaturedCategories />
                 <section id="upcoming" className="container" style={{ paddingTop: 32, paddingBottom: 24 }}>
                   <Events />
                 </section>

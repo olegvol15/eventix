@@ -41,6 +41,9 @@ public class SecurityConfig {
                 .cors(Customizer.withDefaults())
                 .sessionManagement(sm -> sm.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(GET, "/api/v1/events/*/reviews/**").permitAll()
+                        .requestMatchers(POST, "/api/v1/events/*/reviews").authenticated()
+                        .requestMatchers(DELETE, "/api/v1/events/*/reviews/*").authenticated()
                         .requestMatchers("/api/v1/auth/**").permitAll()
                         .requestMatchers(GET, "/api/v1/events/**").permitAll()
                         .requestMatchers("/error").permitAll()

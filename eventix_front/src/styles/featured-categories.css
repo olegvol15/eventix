@@ -1,0 +1,21 @@
+/* src/styles/featured-categories.css */
+.fc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.fc-grid .cards {
+  width: 100%;
+}
+
+.fc-grid .card {
+  border-radius: 16px;
+}
+
+@media (max-width: 480px) {
+  .fc-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+  }
+}

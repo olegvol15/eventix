@@ -7,6 +7,7 @@ import { reserveTickets, confirmTickets } from '../api/ticketsApi'
 import { useSaved } from '../context/SavedContext'
 import { useAuth } from '../context/AuthContext'
 import '../styles/eventDetails.css'
+import Reviews from '../components/layout/Reviews'
 
 export default function EventDetails() {
   const { id } = useParams()
@@ -176,6 +177,7 @@ export default function EventDetails() {
               <p>Refund policy depends on the organizer. You can contact support any time.</p>
             </div>
           </div>
+          <Reviews eventId={Number(id)} />
         </main>
 
         <aside className="ed-aside">

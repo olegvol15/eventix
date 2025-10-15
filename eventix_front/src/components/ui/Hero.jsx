@@ -47,9 +47,6 @@ export default function Hero() {
                 <div className="hero-title">{s.title}</div>
                 <div className="hero-subtitle">{s.subtitle}</div>
                 <div className="hero-buttons">
-                  <Link to="/" className="btn-primary">
-                    Browse events
-                  </Link>
                   <a href="#upcoming" className="btn-ghost">
                     See what’s on
                   </a>

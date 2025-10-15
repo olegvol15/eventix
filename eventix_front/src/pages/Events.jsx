@@ -13,7 +13,7 @@ export default function Events() {
   const [q, setQ] = useState('')
   const [category, setCategory] = useState('')
 
-  const size = 10
+  const size = 6
   const sort = 'eventDate,asc'
   const debouncedQ = useDebounce(q, 300)
 
