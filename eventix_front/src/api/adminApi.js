@@ -18,3 +18,10 @@ export const adminPlacesApi = {
   update: (id, body) => axiosClient.put(`/admin/places/${id}`, body),
   remove: (id) => axiosClient.delete(`/admin/places/${id}`),
 }
+
+export const adminReviewsApi = {
+  list: (params) => axiosClient.get('/admin/reviews', {params}),
+  approve: (id) => axiosClient.post(`/admin/reviews/${id}/approve`),
+  reject: (id) => axiosClient.post(`/admin/reviews/${id}/reject`),
+  remove: (id) => axiosClient.delete(`/admin/reviews/${id}`),
+}

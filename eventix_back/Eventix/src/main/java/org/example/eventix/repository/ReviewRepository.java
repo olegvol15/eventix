@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
-public interface ReviewRepository extends JpaRepository<Review, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long>, JpaSpecificationExecutor<Review> {
     @EntityGraph(attributePaths = {"user"})
     Page<Review> findByEvent_IdOrderByCreatedAtDesc(Long eventId, Pageable pageable);
 

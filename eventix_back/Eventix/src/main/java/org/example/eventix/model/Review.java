@@ -1,13 +1,17 @@
 package org.example.eventix.model;
 
 import jakarta.persistence.*;
-import lombok.Getter; import lombok.Setter;
+import lombok.Getter;
+import lombok.Setter;
+import org.example.eventix.model.enums.ReviewStatus;
+
 import java.time.LocalDateTime;
 
+@Entity
+@Table(name = "reviews")
 @Getter @Setter
-@Entity @Table(name = "reviews",
-        uniqueConstraints = @UniqueConstraint(name="ux_reviews_event_user", columnNames = {"event_id","user_id"}))
 public class Review {
+
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
@@ -17,13 +21,18 @@ public class Review {
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
-    @Column(nullable = false) private Integer rating; // 1..5
-    @Column(nullable = false, columnDefinition = "text") private String comment;
+    @Column(nullable = false)
+    private int rating; // 1..5
 
-    @Column(name="created_at", nullable=false) private LocalDateTime createdAt;
-    @Column(name="updated_at", nullable=false) private LocalDateTime updatedAt;
+    @Column(length = 2000)
+    private String comment;
 
-    @PrePersist void prePersist() { createdAt = updatedAt = LocalDateTime.now(); }
-    @PreUpdate  void preUpdate()  { updatedAt = LocalDateTime.now(); }
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private ReviewStatus status = ReviewStatus.PENDING;
+
+    @Column(nullable = false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 }
+
 

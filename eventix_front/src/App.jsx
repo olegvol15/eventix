@@ -12,6 +12,7 @@ import RequireRole from './components/routes/RequireRole.jsx'
 import AdminDashboard from './pages/admin/AdminDashboard.jsx'
 import AdminEvents from './pages/admin/AdminEvents.jsx'
 import AdminEventForm from './pages/admin/AdminEventForm.jsx'
+import AdminReviews from './pages/admin/AdminReviews.jsx'
 import HowItWorks from './components/layout/HowItWorks.jsx'
 import FeaturedCategories from './components/layout/FeaturedCategories.jsx'
 
@@ -77,6 +78,7 @@ export default function App() {
               <Route path="/admin/events" element={<AdminEvents />} />
               <Route path="/admin/events/new" element={<AdminEventForm />} />
               <Route path="/admin/events/:id/edit" element={<AdminEventForm />} />
+              <Route path="/admin/reviews" element={<AdminReviews />} />
             </Route>
         </Routes>
       </main>

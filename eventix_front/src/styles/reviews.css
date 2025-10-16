@@ -30,7 +30,6 @@
 .stars {
   font-size: 16px;
   cursor: default;
-  user-select: none;
 }
 
 .stars--interactive {
