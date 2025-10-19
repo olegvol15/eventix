@@ -25,3 +25,10 @@ export const adminReviewsApi = {
   reject: (id) => axiosClient.post(`/admin/reviews/${id}/reject`),
   remove: (id) => axiosClient.delete(`/admin/reviews/${id}`),
 }
+
+export const adminTicketsApi = {
+  generate(eventId, {count, category}) {
+    return axiosClient.post(`/admin/events/${eventId}/tickets/generate`, {count, category})
+  }
+}
+

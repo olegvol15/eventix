@@ -14,6 +14,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.time.temporal.ChronoUnit;
 import java.util.List;
+import java.util.Locale;
 import java.util.UUID;
 
 @Service
@@ -30,10 +31,13 @@ public class TicketPurchaseService {
         if (req.quantity() <= 0) {
             throw new IllegalArgumentException("Quantity must be > 0");
         }
-        String category = req.category() == null ? null : req.category().trim().toUpperCase();
+        if (req.category() == null || req.category().isBlank()) {
+            throw new IllegalArgumentException("Category is required");
+        }
+
+        final String category = req.category().trim().toUpperCase(Locale.ROOT);
 
         tickets.releaseExpired(req.eventId(), category);
-        tickets.releaseExpired(req.eventId(), null);
 
         long free = tickets.countFree(req.eventId(), category);
         if (free < req.quantity()) {
@@ -72,6 +76,7 @@ public class TicketPurchaseService {
         return new PurchaseResponse(req.reservationId(), (int) count, "PURCHASED");
     }
 }
+
 
 
 

@@ -5,8 +5,10 @@ import org.example.eventix.dto.AdminEventResponse;
 import org.example.eventix.model.Event;
 import org.example.eventix.model.Place;
 import org.example.eventix.model.enums.EventCategory;
+import org.example.eventix.model.enums.TicketStatus;
 import org.example.eventix.repository.EventRepository;
 import org.example.eventix.repository.PlaceRepository;
+import org.example.eventix.repository.TicketRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,10 +18,12 @@ public class AdminEventService {
 
     private final EventRepository events;
     private final PlaceRepository places;
+    private final TicketRepository tickets;
 
-    public AdminEventService(EventRepository events, PlaceRepository places) {
+    public AdminEventService(EventRepository events, PlaceRepository places,  TicketRepository tickets) {
         this.events = events;
         this.places = places;
+        this.tickets = tickets;
     }
 
     public Page<AdminEventResponse> list(String name, String category, Pageable pageable) {
@@ -79,6 +83,8 @@ public class AdminEventService {
     }
 
     private AdminEventResponse toResponse(Event e) {
+        long total = tickets.countByEvent_Id(e.getId());
+        long free  = tickets.countByEvent_IdAndStatus(e.getId(), TicketStatus.FREE);
         return new AdminEventResponse(
                 e.getId(),
                 e.getName(),
@@ -86,7 +92,9 @@ public class AdminEventService {
                 e.getCategory().name(),
                 e.getPlace().getId(),
                 e.getPlace().getName(),
-                e.getImageUrl()
+                e.getImageUrl(),
+                total,
+                free
         );
     }
 }

@@ -15,6 +15,7 @@ import AdminEventForm from './pages/admin/AdminEventForm.jsx'
 import AdminReviews from './pages/admin/AdminReviews.jsx'
 import HowItWorks from './components/layout/HowItWorks.jsx'
 import FeaturedCategories from './components/layout/FeaturedCategories.jsx'
+import Cart from './pages/ Cart.jsx'
 
 export default function App() {
   return (
@@ -73,6 +74,20 @@ export default function App() {
               </RequireAuth>
             }
           />
+
+          <Route 
+            path="/cart"
+            element={
+              <RequireAuth>
+                <div className="container" style={{ paddingTop: 24, paddingBottom: 24 }}>
+                  <Cart />
+                </div>
+              </RequireAuth>
+            }>
+
+          </Route>
+
+         
             <Route element={<RequireRole role="ADMIN" />}>
               <Route path="/admin" element={<AdminDashboard />} />
               <Route path="/admin/events" element={<AdminEvents />} />

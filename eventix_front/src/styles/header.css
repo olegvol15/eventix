@@ -4,7 +4,6 @@
   --accent: #6ea8ff;
 }
 
-/* ====== HEADER BASE ====== */
 .site-header {
   position: sticky;
   top: 0;
@@ -13,10 +12,9 @@
   background: linear-gradient(180deg, var(--hdr-bg), rgba(9, 12, 26, 0.3));
   border-bottom: 1px solid var(--hdr-border);
   transition: background 0.3s ease;
-  margin-bottom: 0; /* ❗ убираем отступ под хедером */
+  margin-bottom: 0; 
 }
 
-/* выравнивание контента */
 .site-header__inner {
   display: flex;
   align-items: center;
@@ -26,7 +24,6 @@
   position: relative;
 }
 
-/* ====== CENTERED LOGO ====== */
 .center-header .header-logo {
   position: absolute;
   left: 50%;
@@ -35,7 +32,7 @@
 }
 
 .center-header .header-logo img {
-  height: 82px; /* 🔥 увеличили логотип */
+  height: 82px; 
   width: auto;
   display: block;
   filter: drop-shadow(0 6px 20px rgba(0, 0, 0, 0.4));
@@ -47,7 +44,6 @@
   filter: drop-shadow(0 8px 26px rgba(110, 168, 255, 0.5));
 }
 
-/* ====== SIDES ====== */
 .header-side {
   flex: 1;
 }
@@ -57,7 +53,6 @@
   justify-content: flex-end;
 }
 
-/* ====== ICON BUTTON ====== */
 .icon-btn {
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -85,6 +80,8 @@
 .header-glow {
   display: none;
 }
+
+
 
 /* ====== RESPONSIVE ====== */
 @media (max-width: 640px) {

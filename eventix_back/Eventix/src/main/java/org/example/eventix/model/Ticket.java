@@ -24,17 +24,17 @@ public class Ticket {
     private String customerEmail;
 
     @Column(nullable = false, length = 30)
-    private String number;
+    private Integer number;
 
     @Column(nullable = false, precision = 10, scale = 2)
     private BigDecimal cost;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    private TicketStatus status = TicketStatus.FREE;
+    private TicketStatus status;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false)
+    @Column(nullable = false, length = 20)
     private TicketCategory category;
 
     @ManyToOne(fetch = FetchType.LAZY, optional = false)

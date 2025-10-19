@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 
 public record TicketShortResponse(
         Long id,
-        String number,
+        Integer number,
         BigDecimal cost,
         TicketCategory category
 ) {}

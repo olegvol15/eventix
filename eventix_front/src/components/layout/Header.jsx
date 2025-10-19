@@ -4,6 +4,7 @@ import logo from '../../assets/logo.png'
 import '../../styles/header.css'
 import { useAuth } from '../../context/AuthContext'
 import { useSaved } from '../../context/SavedContext'
+import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 
 export default function Header() {
   const nav = useNavigate()
@@ -16,6 +17,9 @@ export default function Header() {
         <div className="site-header__inner container">
           
           <div className="header-side left">
+            <NavLink to="/cart" className="icon-btn" title="Cart">
+              <ShoppingCartRoundedIcon fontSize="large" />
+            </NavLink>
             {isAuthed && (user?.roles || []).some(r => r.endsWith('ADMIN')) && (
               <NavLink to="/admin" className="icon-btn" title="Admin">
                 Admin

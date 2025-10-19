@@ -1,17 +1,23 @@
 package org.example.eventix.service;
 
+import org.example.eventix.dto.CategoryAvailabilityDto;
 import org.example.eventix.dto.EventRequest;
 import org.example.eventix.dto.EventResponse;
 import org.example.eventix.exception.NotFoundException;
 import org.example.eventix.model.Event;
 import org.example.eventix.model.Place;
 import org.example.eventix.model.enums.EventCategory;
+import org.example.eventix.model.enums.TicketCategory;
+import org.example.eventix.model.enums.TicketStatus;
 import org.example.eventix.repository.EventRepository;
 import org.example.eventix.repository.PlaceRepository;
+import org.example.eventix.repository.TicketRepository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 @Service
@@ -19,6 +25,7 @@ public class EventService {
 
     private final EventRepository eventRepository;
     private final PlaceRepository placeRepository;
+    private final TicketRepository ticketRepository;
 
     private static final Map<EventCategory, String> CATEGORY_IMG = Map.of(
             EventCategory.CONCERT,  "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4",
@@ -31,9 +38,10 @@ public class EventService {
     private static final String FALLBACK_IMG =
             "https://images.unsplash.com/photo-1525182008055-f88b95ff7980";
 
-    public EventService(EventRepository eventRepository, PlaceRepository placeRepository) {
+    public EventService(EventRepository eventRepository, PlaceRepository placeRepository,  TicketRepository ticketRepository) {
         this.eventRepository = eventRepository;
         this.placeRepository = placeRepository;
+        this.ticketRepository = ticketRepository;
     }
 
     public EventResponse create(EventRequest req) {
@@ -104,6 +112,16 @@ public class EventService {
                 e.getPlace().getName(),
                 e.getImageUrl()
         );
+    }
+
+    public List<CategoryAvailabilityDto> availabilityForEvent(Long eventId) {
+        List<CategoryAvailabilityDto> out = new ArrayList<>();
+        for (TicketCategory c : TicketCategory.values()) {
+            long free  = ticketRepository.countByEvent_IdAndStatusAndCategory(eventId, TicketStatus.FREE, c);
+            long total = ticketRepository.countByEvent_IdAndCategory(eventId, c);
+            out.add(new CategoryAvailabilityDto(c.name(), free, total));
+        }
+        return out;
     }
 }
 

@@ -9,6 +9,7 @@ import org.springframework.http.MediaType;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,16 +34,21 @@ public class AuthController {
     }
 
     @GetMapping("/me")
-    public Map<String, Object> me(Authentication principal) {
-        boolean authenticated = principal != null && principal.isAuthenticated();
-        return Map.of(
-                "authenticated", authenticated,
-                "name", authenticated ? principal.getName() : null,
-                "authorities",
-                authenticated
-                        ? principal.getAuthorities().stream().map(Object::toString).toList()
-                        : List.of()
-        );
+    public Map<String, Object> me(Authentication auth) {
+        boolean authenticated = auth != null && auth.isAuthenticated();
+
+        Map<String, Object> resp = new LinkedHashMap<>();
+        resp.put("authenticated", authenticated);
+
+        if (authenticated) {
+            resp.put("name", auth.getName());
+            resp.put("authorities", auth.getAuthorities()
+                    .stream().map(Object::toString).toList());
+        } else {
+            resp.put("name", null);
+            resp.put("authorities", List.of());
+        }
+        return resp;
     }
 }
 

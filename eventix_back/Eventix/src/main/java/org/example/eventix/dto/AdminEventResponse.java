@@ -10,5 +10,7 @@ public record AdminEventResponse(
         String category,
         Long placeId,
         String placeName,
-        String imageUrl
+        String imageUrl,
+        long ticketsTotal,
+        long ticketsFree
 ) {}
