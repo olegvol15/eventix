@@ -11,7 +11,9 @@
           "user-select",
           "user-select",
           "user-select",
-          "user-select"
+          "user-select",
+          "backdrop-filter",
+          "backdrop-filter"
         ]
       }
     ],
@@ -20,6 +22,8 @@
   "browserslist": [
     "defaults",
     "not ie 11",
+    "not ios_saf <= 18.1",
+    "not safari <= 18.1",
     "not ios_saf <= 18.1",
     "not safari <= 18.1"
   ]

@@ -16,7 +16,8 @@ import AdminReviews from './pages/admin/AdminReviews.jsx'
 import HowItWorks from './components/layout/HowItWorks.jsx'
 import FeaturedCategories from './components/layout/FeaturedCategories.jsx'
 import Cart from './pages/ Cart.jsx'
-
+import Footer from './components/layout/Footer.jsx'
+import CheckoutSuccess from './pages/CheckoutSuccess.jsx'
 export default function App() {
   return (
     <>
@@ -86,6 +87,7 @@ export default function App() {
             }>
 
           </Route>
+          <Route path="/checkout/success" element={<CheckoutSuccess />} />
 
          
             <Route element={<RequireRole role="ADMIN" />}>
@@ -97,6 +99,8 @@ export default function App() {
             </Route>
         </Routes>
       </main>
+
+      <Footer />
     </>
   )
 }

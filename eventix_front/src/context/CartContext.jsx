@@ -1,4 +1,3 @@
-// src/context/CartContext.jsx
 import { createContext, useContext, useEffect, useMemo, useState } from 'react'
 
 const CartCtx = createContext(null)
@@ -13,7 +12,6 @@ export function CartProvider({ children }) {
   useEffect(() => { localStorage.setItem(LS_KEY, JSON.stringify(items)) }, [items])
 
   function add(item) {
-    // если уже есть такая резервация — заменим
     setItems(prev => {
       const i = prev.findIndex(x => x.reservationId === item.reservationId)
       if (i >= 0) { const cp = [...prev]; cp[i] = item; return cp }
