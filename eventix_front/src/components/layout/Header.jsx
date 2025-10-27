@@ -67,9 +67,3 @@ export default function Header() {
     </>
   )
 }
-
-
-
-
-
-

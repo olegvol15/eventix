@@ -11,7 +11,7 @@ export default function EventCard({ event }) {
     imageUrl,
   } = event
 
-  const bg = imageUrl || CATEGORY_IMG[category] || DEFAULT_IMG
+  const bg = imageUrl || DEFAULT_IMG
 
   return (
     <div className="card" style={{ padding: 18 }}>
